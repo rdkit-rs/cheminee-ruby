@@ -11,5 +11,5 @@ OpenAPI Generator version: 7.0.0-SNAPSHOT
 =end
 
 module Cheminee
-  VERSION = '2.0.1'
+  VERSION = 'v0.0.2'
 end
