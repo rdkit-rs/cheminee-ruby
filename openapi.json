@@ -1,0 +1,77 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Cheminée",
+    "description": "Cheminée: The Chemical Structure Search Engine",
+    "version": "1.0",
+    "contact": {
+      "url": "https://github.com/rdkit-rs/cheminee"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api/v1"
+    }
+  ],
+  "tags": [],
+  "paths": {
+    "/standardize": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json; charset=utf-8": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Smile"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StandardizedSmile"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Smile": {
+        "type": "object",
+        "required": [
+          "smile"
+        ],
+        "properties": {
+          "smile": {
+            "type": "string"
+          }
+        }
+      },
+      "StandardizedSmile": {
+        "type": "object",
+        "properties": {
+          "smile": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
