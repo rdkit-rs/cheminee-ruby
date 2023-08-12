@@ -9,6 +9,7 @@ Rakefile
 cheminee.gemspec
 docs/DefaultApi.md
 docs/Smile.md
+docs/StandardizedSmile.md
 git_push.sh
 lib/cheminee.rb
 lib/cheminee/api/default_api.rb
@@ -16,9 +17,8 @@ lib/cheminee/api_client.rb
 lib/cheminee/api_error.rb
 lib/cheminee/configuration.rb
 lib/cheminee/models/smile.rb
+lib/cheminee/models/standardized_smile.rb
 lib/cheminee/version.rb
-spec/api/default_api_spec.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/smile_spec.rb
 spec/spec_helper.rb

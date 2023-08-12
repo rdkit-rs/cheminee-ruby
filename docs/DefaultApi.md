@@ -1,6 +1,6 @@
 # Cheminee::DefaultApi
 
-All URIs are relative to *http://localhost:3000/api*
+All URIs are relative to *http://localhost:3000/api/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost:3000/api*
 
 ## standardize_post
 
-> <Array<Smile>> standardize_post(smile)
+> <Array<StandardizedSmile>> standardize_post(smile)
 
 
 
@@ -35,7 +35,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<Smile>>, Integer, Hash)> standardize_post_with_http_info(smile)
+> <Array(<Array<StandardizedSmile>>, Integer, Hash)> standardize_post_with_http_info(smile)
 
 ```ruby
 begin
@@ -43,7 +43,7 @@ begin
   data, status_code, headers = api_instance.standardize_post_with_http_info(smile)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Array<Smile>>
+  p data # => <Array<StandardizedSmile>>
 rescue Cheminee::ApiError => e
   puts "Error when calling DefaultApi->standardize_post_with_http_info: #{e}"
 end
@@ -57,7 +57,7 @@ end
 
 ### Return type
 
-[**Array&lt;Smile&gt;**](Smile.md)
+[**Array&lt;StandardizedSmile&gt;**](StandardizedSmile.md)
 
 ### Authorization
 
@@ -65,6 +65,6 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+- **Content-Type**: application/json; charset=utf-8
+- **Accept**: application/json; charset=utf-8
 

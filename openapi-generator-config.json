@@ -1,5 +1,7 @@
 {
   "gemName": "cheminee",
   "gemAuthor": "Xavier Lange",
-  "gemAuthorEmail": "xrlange@gmail.com"
+  "gemAuthorEmail": "xrlange@gmail.com",
+  "gemHomepage": "https://github.com/rdkit-rs/cheminee-ruby",
+  "gemRequiredRubyVersion": ">= 3.0"
 }

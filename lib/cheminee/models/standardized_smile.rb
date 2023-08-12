@@ -14,13 +14,16 @@ require 'date'
 require 'time'
 
 module Cheminee
-  class Smile
+  class StandardizedSmile
     attr_accessor :smile
+
+    attr_accessor :error
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'smile' => :'smile'
+        :'smile' => :'smile',
+        :'error' => :'error'
       }
     end
 
@@ -32,7 +35,8 @@ module Cheminee
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'smile' => :'String'
+        :'smile' => :'String',
+        :'error' => :'String'
       }
     end
 
@@ -46,13 +50,13 @@ module Cheminee
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Cheminee::Smile` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Cheminee::StandardizedSmile` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Cheminee::Smile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Cheminee::StandardizedSmile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -60,23 +64,22 @@ module Cheminee
       if attributes.key?(:'smile')
         self.smile = attributes[:'smile']
       end
+
+      if attributes.key?(:'error')
+        self.error = attributes[:'error']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @smile.nil?
-        invalid_properties.push('invalid value for "smile", smile cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @smile.nil?
       true
     end
 
@@ -85,7 +88,8 @@ module Cheminee
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          smile == o.smile
+          smile == o.smile &&
+          error == o.error
     end
 
     # @see the `==` method
@@ -97,7 +101,7 @@ module Cheminee
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [smile].hash
+      [smile, error].hash
     end
 
     # Builds the object from hash
