@@ -14,16 +14,22 @@ require 'date'
 require 'time'
 
 module Cheminee
-  class StandardizedSmile
-    attr_accessor :smile
+  class SubstructureSearchHit
+    attr_accessor :extra_data
 
-    attr_accessor :error
+    attr_accessor :smiles
+
+    attr_accessor :score
+
+    attr_accessor :query
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'smile' => :'smile',
-        :'error' => :'error'
+        :'extra_data' => :'extra_data',
+        :'smiles' => :'smiles',
+        :'score' => :'score',
+        :'query' => :'query'
       }
     end
 
@@ -35,14 +41,17 @@ module Cheminee
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'smile' => :'String',
-        :'error' => :'String'
+        :'extra_data' => :'Object',
+        :'smiles' => :'String',
+        :'score' => :'Float',
+        :'query' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'extra_data',
       ])
     end
 
@@ -50,23 +59,39 @@ module Cheminee
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Cheminee::StandardizedSmile` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Cheminee::SubstructureSearchHit` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Cheminee::StandardizedSmile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Cheminee::SubstructureSearchHit`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'smile')
-        self.smile = attributes[:'smile']
+      if attributes.key?(:'extra_data')
+        self.extra_data = attributes[:'extra_data']
+      else
+        self.extra_data = nil
       end
 
-      if attributes.key?(:'error')
-        self.error = attributes[:'error']
+      if attributes.key?(:'smiles')
+        self.smiles = attributes[:'smiles']
+      else
+        self.smiles = nil
+      end
+
+      if attributes.key?(:'score')
+        self.score = attributes[:'score']
+      else
+        self.score = nil
+      end
+
+      if attributes.key?(:'query')
+        self.query = attributes[:'query']
+      else
+        self.query = nil
       end
     end
 
@@ -75,6 +100,18 @@ module Cheminee
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @smiles.nil?
+        invalid_properties.push('invalid value for "smiles", smiles cannot be nil.')
+      end
+
+      if @score.nil?
+        invalid_properties.push('invalid value for "score", score cannot be nil.')
+      end
+
+      if @query.nil?
+        invalid_properties.push('invalid value for "query", query cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -82,6 +119,9 @@ module Cheminee
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @smiles.nil?
+      return false if @score.nil?
+      return false if @query.nil?
       true
     end
 
@@ -90,8 +130,10 @@ module Cheminee
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          smile == o.smile &&
-          error == o.error
+          extra_data == o.extra_data &&
+          smiles == o.smiles &&
+          score == o.score &&
+          query == o.query
     end
 
     # @see the `==` method
@@ -103,7 +145,7 @@ module Cheminee
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [smile, error].hash
+      [extra_data, smiles, score, query].hash
     end
 
     # Builds the object from hash

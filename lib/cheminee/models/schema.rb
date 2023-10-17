@@ -14,16 +14,16 @@ require 'date'
 require 'time'
 
 module Cheminee
-  class StandardizedSmile
-    attr_accessor :smile
+  class Schema
+    attr_accessor :name
 
-    attr_accessor :error
+    attr_accessor :schema
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'smile' => :'smile',
-        :'error' => :'error'
+        :'name' => :'name',
+        :'schema' => :'schema'
       }
     end
 
@@ -35,14 +35,15 @@ module Cheminee
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'smile' => :'String',
-        :'error' => :'String'
+        :'name' => :'String',
+        :'schema' => :'Object'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'schema'
       ])
     end
 
@@ -50,23 +51,27 @@ module Cheminee
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Cheminee::StandardizedSmile` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Cheminee::Schema` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Cheminee::StandardizedSmile`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Cheminee::Schema`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'smile')
-        self.smile = attributes[:'smile']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      else
+        self.name = nil
       end
 
-      if attributes.key?(:'error')
-        self.error = attributes[:'error']
+      if attributes.key?(:'schema')
+        self.schema = attributes[:'schema']
+      else
+        self.schema = nil
       end
     end
 
@@ -75,6 +80,10 @@ module Cheminee
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -82,6 +91,7 @@ module Cheminee
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @name.nil?
       true
     end
 
@@ -90,8 +100,8 @@ module Cheminee
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          smile == o.smile &&
-          error == o.error
+          name == o.name &&
+          schema == o.schema
     end
 
     # @see the `==` method
@@ -103,7 +113,7 @@ module Cheminee
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [smile, error].hash
+      [name, schema].hash
     end
 
     # Builds the object from hash

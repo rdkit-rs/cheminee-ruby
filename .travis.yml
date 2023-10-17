@@ -8,4 +8,4 @@ script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
   - gem build cheminee.gemspec
-  - gem install ./cheminee-0.0.15.gem
+  - gem install ./cheminee-0.1.5.gem
