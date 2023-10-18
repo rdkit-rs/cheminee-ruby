@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost:3000/api*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**v1_indexes_get**](DefaultApi.md#v1_indexes_get) | **GET** /v1/indexes |  |
+| [**v1_indexes_index_bulk_index_post**](DefaultApi.md#v1_indexes_index_bulk_index_post) | **POST** /v1/indexes/{index}/bulk_index |  |
 | [**v1_indexes_index_get**](DefaultApi.md#v1_indexes_index_get) | **GET** /v1/indexes/{index} |  |
 | [**v1_indexes_index_post**](DefaultApi.md#v1_indexes_index_post) | **POST** /v1/indexes/{index} |  |
 | [**v1_indexes_index_search_substructure_get**](DefaultApi.md#v1_indexes_index_search_substructure_get) | **GET** /v1/indexes/{index}/search/substructure |  |
@@ -68,6 +69,70 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json; charset=utf-8
+
+
+## v1_indexes_index_bulk_index_post
+
+> <PostIndexBulkResponseOk> v1_indexes_index_bulk_index_post(index, bulk_request)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'cheminee'
+
+api_instance = Cheminee::DefaultApi.new
+index = 'index_example' # String | 
+bulk_request = Cheminee::BulkRequest.new({docs: [Cheminee::BulkRequestDoc.new({smile: 'smile_example'})]}) # BulkRequest | 
+
+begin
+  
+  result = api_instance.v1_indexes_index_bulk_index_post(index, bulk_request)
+  p result
+rescue Cheminee::ApiError => e
+  puts "Error when calling DefaultApi->v1_indexes_index_bulk_index_post: #{e}"
+end
+```
+
+#### Using the v1_indexes_index_bulk_index_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PostIndexBulkResponseOk>, Integer, Hash)> v1_indexes_index_bulk_index_post_with_http_info(index, bulk_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.v1_indexes_index_bulk_index_post_with_http_info(index, bulk_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PostIndexBulkResponseOk>
+rescue Cheminee::ApiError => e
+  puts "Error when calling DefaultApi->v1_indexes_index_bulk_index_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **index** | **String** |  |  |
+| **bulk_request** | [**BulkRequest**](BulkRequest.md) |  |  |
+
+### Return type
+
+[**PostIndexBulkResponseOk**](PostIndexBulkResponseOk.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=utf-8
 - **Accept**: application/json; charset=utf-8
 
 

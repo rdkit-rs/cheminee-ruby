@@ -73,6 +73,76 @@ module Cheminee
     end
 
     # @param index [String] 
+    # @param bulk_request [BulkRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [PostIndexBulkResponseOk]
+    def v1_indexes_index_bulk_index_post(index, bulk_request, opts = {})
+      data, _status_code, _headers = v1_indexes_index_bulk_index_post_with_http_info(index, bulk_request, opts)
+      data
+    end
+
+    # @param index [String] 
+    # @param bulk_request [BulkRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(PostIndexBulkResponseOk, Integer, Hash)>] PostIndexBulkResponseOk data, response status code and response headers
+    def v1_indexes_index_bulk_index_post_with_http_info(index, bulk_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.v1_indexes_index_bulk_index_post ...'
+      end
+      # verify the required parameter 'index' is set
+      if @api_client.config.client_side_validation && index.nil?
+        fail ArgumentError, "Missing the required parameter 'index' when calling DefaultApi.v1_indexes_index_bulk_index_post"
+      end
+      # verify the required parameter 'bulk_request' is set
+      if @api_client.config.client_side_validation && bulk_request.nil?
+        fail ArgumentError, "Missing the required parameter 'bulk_request' when calling DefaultApi.v1_indexes_index_bulk_index_post"
+      end
+      # resource path
+      local_var_path = '/v1/indexes/{index}/bulk_index'.sub('{' + 'index' + '}', CGI.escape(index.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=utf-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(bulk_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PostIndexBulkResponseOk'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.v1_indexes_index_bulk_index_post",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#v1_indexes_index_bulk_index_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param index [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<IndexMeta>]
     def v1_indexes_index_get(index, opts = {})
