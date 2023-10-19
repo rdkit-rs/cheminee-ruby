@@ -19,6 +19,7 @@ module Cheminee
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # List indexes
     # @param [Hash] opts the optional parameters
     # @return [Array<IndexMeta>]
     def v1_indexes_get(opts = {})
@@ -26,6 +27,7 @@ module Cheminee
       data
     end
 
+    # List indexes
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<IndexMeta>, Integer, Hash)>] Array<IndexMeta> data, response status code and response headers
     def v1_indexes_get_with_http_info(opts = {})
@@ -72,6 +74,7 @@ module Cheminee
       return data, status_code, headers
     end
 
+    # Index a list of SMILES and associated, free-form JSON attributes which are indexed and searchable
     # @param index [String] 
     # @param bulk_request [BulkRequest] 
     # @param [Hash] opts the optional parameters
@@ -81,6 +84,7 @@ module Cheminee
       data
     end
 
+    # Index a list of SMILES and associated, free-form JSON attributes which are indexed and searchable
     # @param index [String] 
     # @param bulk_request [BulkRequest] 
     # @param [Hash] opts the optional parameters
@@ -142,6 +146,7 @@ module Cheminee
       return data, status_code, headers
     end
 
+    # Get extended information about an index
     # @param index [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<IndexMeta>]
@@ -150,6 +155,7 @@ module Cheminee
       data
     end
 
+    # Get extended information about an index
     # @param index [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<IndexMeta>, Integer, Hash)>] Array<IndexMeta> data, response status code and response headers
@@ -201,6 +207,7 @@ module Cheminee
       return data, status_code, headers
     end
 
+    # Create an index
     # @param index [String] 
     # @param schema [String] 
     # @param [Hash] opts the optional parameters
@@ -211,6 +218,7 @@ module Cheminee
       data
     end
 
+    # Create an index
     # @param index [String] 
     # @param schema [String] 
     # @param [Hash] opts the optional parameters
@@ -270,6 +278,7 @@ module Cheminee
       return data, status_code, headers
     end
 
+    # Perform substructure search against index
     # @param index [String] 
     # @param q [String] 
     # @param [Hash] opts the optional parameters
@@ -279,6 +288,7 @@ module Cheminee
       data
     end
 
+    # Perform substructure search against index
     # @param index [String] 
     # @param q [String] 
     # @param [Hash] opts the optional parameters
@@ -336,6 +346,7 @@ module Cheminee
       return data, status_code, headers
     end
 
+    # List schemas available for creating indexes
     # @param [Hash] opts the optional parameters
     # @return [Array<Schema>]
     def v1_schemas_get(opts = {})
@@ -343,6 +354,7 @@ module Cheminee
       data
     end
 
+    # List schemas available for creating indexes
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<Schema>, Integer, Hash)>] Array<Schema> data, response status code and response headers
     def v1_schemas_get_with_http_info(opts = {})
@@ -389,6 +401,7 @@ module Cheminee
       return data, status_code, headers
     end
 
+    # Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines
     # @param smile [Array<Smile>] 
     # @param [Hash] opts the optional parameters
     # @return [Array<StandardizedSmile>]
@@ -397,6 +410,7 @@ module Cheminee
       data
     end
 
+    # Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines
     # @param smile [Array<Smile>] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<StandardizedSmile>, Integer, Hash)>] Array<StandardizedSmile> data, response status code and response headers

@@ -17,6 +17,7 @@ module Cheminee
   class BulkRequestDoc
     attr_accessor :smile
 
+    # This value can store an arbitrary JSON object like '{}'
     attr_accessor :extra_data
 
     # Attribute mapping from ruby-style variable name to JSON key.
