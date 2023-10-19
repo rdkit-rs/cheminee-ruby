@@ -29,7 +29,8 @@ require 'cheminee/models/post_index_bulk_response_ok_status'
 require 'cheminee/models/schema'
 require 'cheminee/models/smile'
 require 'cheminee/models/standardized_smile'
-require 'cheminee/models/substructure_search_hit'
+require 'cheminee/models/structure_response_error'
+require 'cheminee/models/structure_search_hit'
 
 # APIs
 require 'cheminee/api/default_api'

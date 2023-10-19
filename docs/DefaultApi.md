@@ -268,7 +268,7 @@ No authorization required
 
 ## v1_indexes_index_search_substructure_get
 
-> <Array<SubstructureSearchHit>> v1_indexes_index_search_substructure_get(index, q)
+> <Array<StructureSearchHit>> v1_indexes_index_search_substructure_get(index, smile, opts)
 
 Perform substructure search against index
 
@@ -280,11 +280,14 @@ require 'cheminee'
 
 api_instance = Cheminee::DefaultApi.new
 index = 'index_example' # String | 
-q = 'q_example' # String | 
+smile = 'smile_example' # String | 
+opts = {
+  limit: 'limit_example' # String | 
+}
 
 begin
   # Perform substructure search against index
-  result = api_instance.v1_indexes_index_search_substructure_get(index, q)
+  result = api_instance.v1_indexes_index_search_substructure_get(index, smile, opts)
   p result
 rescue Cheminee::ApiError => e
   puts "Error when calling DefaultApi->v1_indexes_index_search_substructure_get: #{e}"
@@ -295,15 +298,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<SubstructureSearchHit>>, Integer, Hash)> v1_indexes_index_search_substructure_get_with_http_info(index, q)
+> <Array(<Array<StructureSearchHit>>, Integer, Hash)> v1_indexes_index_search_substructure_get_with_http_info(index, smile, opts)
 
 ```ruby
 begin
   # Perform substructure search against index
-  data, status_code, headers = api_instance.v1_indexes_index_search_substructure_get_with_http_info(index, q)
+  data, status_code, headers = api_instance.v1_indexes_index_search_substructure_get_with_http_info(index, smile, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Array<SubstructureSearchHit>>
+  p data # => <Array<StructureSearchHit>>
 rescue Cheminee::ApiError => e
   puts "Error when calling DefaultApi->v1_indexes_index_search_substructure_get_with_http_info: #{e}"
 end
@@ -314,11 +317,12 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **index** | **String** |  |  |
-| **q** | **String** |  |  |
+| **smile** | **String** |  |  |
+| **limit** | **String** |  | [optional] |
 
 ### Return type
 
-[**Array&lt;SubstructureSearchHit&gt;**](SubstructureSearchHit.md)
+[**Array&lt;StructureSearchHit&gt;**](StructureSearchHit.md)
 
 ### Authorization
 

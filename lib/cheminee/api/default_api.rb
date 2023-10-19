@@ -280,20 +280,22 @@ module Cheminee
 
     # Perform substructure search against index
     # @param index [String] 
-    # @param q [String] 
+    # @param smile [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<SubstructureSearchHit>]
-    def v1_indexes_index_search_substructure_get(index, q, opts = {})
-      data, _status_code, _headers = v1_indexes_index_search_substructure_get_with_http_info(index, q, opts)
+    # @option opts [String] :limit 
+    # @return [Array<StructureSearchHit>]
+    def v1_indexes_index_search_substructure_get(index, smile, opts = {})
+      data, _status_code, _headers = v1_indexes_index_search_substructure_get_with_http_info(index, smile, opts)
       data
     end
 
     # Perform substructure search against index
     # @param index [String] 
-    # @param q [String] 
+    # @param smile [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<SubstructureSearchHit>, Integer, Hash)>] Array<SubstructureSearchHit> data, response status code and response headers
-    def v1_indexes_index_search_substructure_get_with_http_info(index, q, opts = {})
+    # @option opts [String] :limit 
+    # @return [Array<(Array<StructureSearchHit>, Integer, Hash)>] Array<StructureSearchHit> data, response status code and response headers
+    def v1_indexes_index_search_substructure_get_with_http_info(index, smile, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.v1_indexes_index_search_substructure_get ...'
       end
@@ -301,16 +303,17 @@ module Cheminee
       if @api_client.config.client_side_validation && index.nil?
         fail ArgumentError, "Missing the required parameter 'index' when calling DefaultApi.v1_indexes_index_search_substructure_get"
       end
-      # verify the required parameter 'q' is set
-      if @api_client.config.client_side_validation && q.nil?
-        fail ArgumentError, "Missing the required parameter 'q' when calling DefaultApi.v1_indexes_index_search_substructure_get"
+      # verify the required parameter 'smile' is set
+      if @api_client.config.client_side_validation && smile.nil?
+        fail ArgumentError, "Missing the required parameter 'smile' when calling DefaultApi.v1_indexes_index_search_substructure_get"
       end
       # resource path
       local_var_path = '/v1/indexes/{index}/search/substructure'.sub('{' + 'index' + '}', CGI.escape(index.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'q'] = q
+      query_params[:'smile'] = smile
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -324,7 +327,7 @@ module Cheminee
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Array<SubstructureSearchHit>'
+      return_type = opts[:debug_return_type] || 'Array<StructureSearchHit>'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || []
