@@ -282,7 +282,8 @@ module Cheminee
     # @param index [String] 
     # @param smile [String] 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :limit 
+    # @option opts [Integer] :result_limit 
+    # @option opts [Integer] :tautomer_limit 
     # @return [Array<StructureSearchHit>]
     def v1_indexes_index_search_substructure_get(index, smile, opts = {})
       data, _status_code, _headers = v1_indexes_index_search_substructure_get_with_http_info(index, smile, opts)
@@ -293,7 +294,8 @@ module Cheminee
     # @param index [String] 
     # @param smile [String] 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :limit 
+    # @option opts [Integer] :result_limit 
+    # @option opts [Integer] :tautomer_limit 
     # @return [Array<(Array<StructureSearchHit>, Integer, Hash)>] Array<StructureSearchHit> data, response status code and response headers
     def v1_indexes_index_search_substructure_get_with_http_info(index, smile, opts = {})
       if @api_client.config.debugging
@@ -313,7 +315,8 @@ module Cheminee
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'smile'] = smile
-      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'result_limit'] = opts[:'result_limit'] if !opts[:'result_limit'].nil?
+      query_params[:'tautomer_limit'] = opts[:'tautomer_limit'] if !opts[:'tautomer_limit'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

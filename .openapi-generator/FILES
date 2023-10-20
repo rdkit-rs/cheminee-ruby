@@ -45,6 +45,4 @@ lib/cheminee/models/structure_search_hit.rb
 lib/cheminee/version.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/structure_response_error_spec.rb
-spec/models/structure_search_hit_spec.rb
 spec/spec_helper.rb

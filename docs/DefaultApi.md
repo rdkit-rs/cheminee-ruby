@@ -282,7 +282,8 @@ api_instance = Cheminee::DefaultApi.new
 index = 'index_example' # String | 
 smile = 'smile_example' # String | 
 opts = {
-  limit: 'limit_example' # String | 
+  result_limit: 56, # Integer | 
+  tautomer_limit: 56 # Integer | 
 }
 
 begin
@@ -318,7 +319,8 @@ end
 | ---- | ---- | ----------- | ----- |
 | **index** | **String** |  |  |
 | **smile** | **String** |  |  |
-| **limit** | **String** |  | [optional] |
+| **result_limit** | **Integer** |  | [optional] |
+| **tautomer_limit** | **Integer** |  | [optional] |
 
 ### Return type
 
