@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **smile** | **String** |  |  |
+| **smiles** | **String** |  |  |
 | **extra_data** | **Object** | This value can store an arbitrary JSON object like &#39;{}&#39; | [optional] |
 
 ## Example
@@ -13,7 +13,7 @@
 require 'cheminee'
 
 instance = Cheminee::BulkRequestDoc.new(
-  smile: null,
+  smiles: null,
   extra_data: null
 )
 ```

@@ -14,13 +14,13 @@ require 'date'
 require 'time'
 
 module Cheminee
-  class GetIndexesResponseError
-    attr_accessor :error
+  class Smiles
+    attr_accessor :smiles
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'error' => :'error'
+        :'smiles' => :'smiles'
       }
     end
 
@@ -32,7 +32,7 @@ module Cheminee
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'error' => :'String'
+        :'smiles' => :'String'
       }
     end
 
@@ -46,21 +46,21 @@ module Cheminee
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Cheminee::GetIndexesResponseError` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Cheminee::Smiles` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Cheminee::GetIndexesResponseError`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Cheminee::Smiles`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'error')
-        self.error = attributes[:'error']
+      if attributes.key?(:'smiles')
+        self.smiles = attributes[:'smiles']
       else
-        self.error = nil
+        self.smiles = nil
       end
     end
 
@@ -69,8 +69,8 @@ module Cheminee
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @error.nil?
-        invalid_properties.push('invalid value for "error", error cannot be nil.')
+      if @smiles.nil?
+        invalid_properties.push('invalid value for "smiles", smiles cannot be nil.')
       end
 
       invalid_properties
@@ -80,7 +80,7 @@ module Cheminee
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @error.nil?
+      return false if @smiles.nil?
       true
     end
 
@@ -89,7 +89,7 @@ module Cheminee
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          error == o.error
+          smiles == o.smiles
     end
 
     # @see the `==` method
@@ -101,7 +101,7 @@ module Cheminee
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [error].hash
+      [smiles].hash
     end
 
     # Builds the object from hash

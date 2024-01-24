@@ -8,6 +8,7 @@ All URIs are relative to *http://localhost:3000/api*
 | [**v1_indexes_index_bulk_index_post**](DefaultApi.md#v1_indexes_index_bulk_index_post) | **POST** /v1/indexes/{index}/bulk_index | Index a list of SMILES and associated, free-form JSON attributes which are indexed and searchable |
 | [**v1_indexes_index_get**](DefaultApi.md#v1_indexes_index_get) | **GET** /v1/indexes/{index} | Get extended information about an index |
 | [**v1_indexes_index_post**](DefaultApi.md#v1_indexes_index_post) | **POST** /v1/indexes/{index} | Create an index |
+| [**v1_indexes_index_search_basic_get**](DefaultApi.md#v1_indexes_index_search_basic_get) | **GET** /v1/indexes/{index}/search/basic | Perform basic query search against index |
 | [**v1_indexes_index_search_substructure_get**](DefaultApi.md#v1_indexes_index_search_substructure_get) | **GET** /v1/indexes/{index}/search/substructure | Perform substructure search against index |
 | [**v1_schemas_get**](DefaultApi.md#v1_schemas_get) | **GET** /v1/schemas | List schemas available for creating indexes |
 | [**v1_standardize_post**](DefaultApi.md#v1_standardize_post) | **POST** /v1/standardize | Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines |
@@ -86,7 +87,7 @@ require 'cheminee'
 
 api_instance = Cheminee::DefaultApi.new
 index = 'index_example' # String | 
-bulk_request = Cheminee::BulkRequest.new({docs: [Cheminee::BulkRequestDoc.new({smile: 'smile_example'})]}) # BulkRequest | 
+bulk_request = Cheminee::BulkRequest.new({docs: [Cheminee::BulkRequestDoc.new({smiles: 'smiles_example'})]}) # BulkRequest | 
 
 begin
   # Index a list of SMILES and associated, free-form JSON attributes which are indexed and searchable
@@ -138,7 +139,7 @@ No authorization required
 
 ## v1_indexes_index_get
 
-> <Array<IndexMeta>> v1_indexes_index_get(index)
+> <IndexSchema> v1_indexes_index_get(index)
 
 Get extended information about an index
 
@@ -164,7 +165,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<IndexMeta>>, Integer, Hash)> v1_indexes_index_get_with_http_info(index)
+> <Array(<IndexSchema>, Integer, Hash)> v1_indexes_index_get_with_http_info(index)
 
 ```ruby
 begin
@@ -172,7 +173,7 @@ begin
   data, status_code, headers = api_instance.v1_indexes_index_get_with_http_info(index)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Array<IndexMeta>>
+  p data # => <IndexSchema>
 rescue Cheminee::ApiError => e
   puts "Error when calling DefaultApi->v1_indexes_index_get_with_http_info: #{e}"
 end
@@ -186,7 +187,7 @@ end
 
 ### Return type
 
-[**Array&lt;IndexMeta&gt;**](IndexMeta.md)
+[**IndexSchema**](IndexSchema.md)
 
 ### Authorization
 
@@ -266,9 +267,77 @@ No authorization required
 - **Accept**: application/json; charset=utf-8
 
 
+## v1_indexes_index_search_basic_get
+
+> <Array<QuerySearchHit>> v1_indexes_index_search_basic_get(index, query, opts)
+
+Perform basic query search against index
+
+### Examples
+
+```ruby
+require 'time'
+require 'cheminee'
+
+api_instance = Cheminee::DefaultApi.new
+index = 'index_example' # String | 
+query = 'query_example' # String | 
+opts = {
+  limit: 56 # Integer | 
+}
+
+begin
+  # Perform basic query search against index
+  result = api_instance.v1_indexes_index_search_basic_get(index, query, opts)
+  p result
+rescue Cheminee::ApiError => e
+  puts "Error when calling DefaultApi->v1_indexes_index_search_basic_get: #{e}"
+end
+```
+
+#### Using the v1_indexes_index_search_basic_get_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<QuerySearchHit>>, Integer, Hash)> v1_indexes_index_search_basic_get_with_http_info(index, query, opts)
+
+```ruby
+begin
+  # Perform basic query search against index
+  data, status_code, headers = api_instance.v1_indexes_index_search_basic_get_with_http_info(index, query, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<QuerySearchHit>>
+rescue Cheminee::ApiError => e
+  puts "Error when calling DefaultApi->v1_indexes_index_search_basic_get_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **index** | **String** |  |  |
+| **query** | **String** |  |  |
+| **limit** | **Integer** |  | [optional] |
+
+### Return type
+
+[**Array&lt;QuerySearchHit&gt;**](QuerySearchHit.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json; charset=utf-8
+
+
 ## v1_indexes_index_search_substructure_get
 
-> <Array<StructureSearchHit>> v1_indexes_index_search_substructure_get(index, smile, opts)
+> <Array<StructureSearchHit>> v1_indexes_index_search_substructure_get(index, smiles, opts)
 
 Perform substructure search against index
 
@@ -280,15 +349,16 @@ require 'cheminee'
 
 api_instance = Cheminee::DefaultApi.new
 index = 'index_example' # String | 
-smile = 'smile_example' # String | 
+smiles = 'smiles_example' # String | 
 opts = {
   result_limit: 56, # Integer | 
-  tautomer_limit: 56 # Integer | 
+  tautomer_limit: 56, # Integer | 
+  extra_query: 'extra_query_example' # String | 
 }
 
 begin
   # Perform substructure search against index
-  result = api_instance.v1_indexes_index_search_substructure_get(index, smile, opts)
+  result = api_instance.v1_indexes_index_search_substructure_get(index, smiles, opts)
   p result
 rescue Cheminee::ApiError => e
   puts "Error when calling DefaultApi->v1_indexes_index_search_substructure_get: #{e}"
@@ -299,12 +369,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<StructureSearchHit>>, Integer, Hash)> v1_indexes_index_search_substructure_get_with_http_info(index, smile, opts)
+> <Array(<Array<StructureSearchHit>>, Integer, Hash)> v1_indexes_index_search_substructure_get_with_http_info(index, smiles, opts)
 
 ```ruby
 begin
   # Perform substructure search against index
-  data, status_code, headers = api_instance.v1_indexes_index_search_substructure_get_with_http_info(index, smile, opts)
+  data, status_code, headers = api_instance.v1_indexes_index_search_substructure_get_with_http_info(index, smiles, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<StructureSearchHit>>
@@ -318,9 +388,10 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **index** | **String** |  |  |
-| **smile** | **String** |  |  |
+| **smiles** | **String** |  |  |
 | **result_limit** | **Integer** |  | [optional] |
 | **tautomer_limit** | **Integer** |  | [optional] |
+| **extra_query** | **String** |  | [optional] |
 
 ### Return type
 
@@ -397,7 +468,7 @@ No authorization required
 
 ## v1_standardize_post
 
-> <Array<StandardizedSmile>> v1_standardize_post(smile)
+> <Array<StandardizedSmiles>> v1_standardize_post(smiles)
 
 Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines
 
@@ -408,11 +479,11 @@ require 'time'
 require 'cheminee'
 
 api_instance = Cheminee::DefaultApi.new
-smile = [Cheminee::Smile.new({smile: 'smile_example'})] # Array<Smile> | 
+smiles = [Cheminee::Smiles.new({smiles: 'smiles_example'})] # Array<Smiles> | 
 
 begin
   # Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines
-  result = api_instance.v1_standardize_post(smile)
+  result = api_instance.v1_standardize_post(smiles)
   p result
 rescue Cheminee::ApiError => e
   puts "Error when calling DefaultApi->v1_standardize_post: #{e}"
@@ -423,15 +494,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<StandardizedSmile>>, Integer, Hash)> v1_standardize_post_with_http_info(smile)
+> <Array(<Array<StandardizedSmiles>>, Integer, Hash)> v1_standardize_post_with_http_info(smiles)
 
 ```ruby
 begin
   # Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines
-  data, status_code, headers = api_instance.v1_standardize_post_with_http_info(smile)
+  data, status_code, headers = api_instance.v1_standardize_post_with_http_info(smiles)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Array<StandardizedSmile>>
+  p data # => <Array<StandardizedSmiles>>
 rescue Cheminee::ApiError => e
   puts "Error when calling DefaultApi->v1_standardize_post_with_http_info: #{e}"
 end
@@ -441,11 +512,11 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **smile** | [**Array&lt;Smile&gt;**](Smile.md) |  |  |
+| **smiles** | [**Array&lt;Smiles&gt;**](Smiles.md) |  |  |
 
 ### Return type
 
-[**Array&lt;StandardizedSmile&gt;**](StandardizedSmile.md)
+[**Array&lt;StandardizedSmiles&gt;**](StandardizedSmiles.md)
 
 ### Authorization
 
