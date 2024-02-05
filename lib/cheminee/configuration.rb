@@ -150,7 +150,7 @@ module Cheminee
 
     def initialize
       @scheme = 'http'
-      @host = 'localhost:3000'
+      @host = 'localhost:4001'
       @base_path = '/api'
       @server_index = nil
       @server_operation_index = {}
@@ -241,7 +241,7 @@ module Cheminee
     def server_settings
       [
         {
-          url: "http://localhost:3000/api",
+          url: "http://localhost:4001/api",
           description: "No description provided",
         }
       ]
