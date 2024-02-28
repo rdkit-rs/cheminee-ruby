@@ -4,6 +4,7 @@ All URIs are relative to *http://localhost:4001/api*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**v1_convert_mol_block_to_smiles_post**](DefaultApi.md#v1_convert_mol_block_to_smiles_post) | **POST** /v1/convert/mol_block_to_smiles | Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines |
 | [**v1_indexes_get**](DefaultApi.md#v1_indexes_get) | **GET** /v1/indexes | List indexes |
 | [**v1_indexes_index_bulk_index_post**](DefaultApi.md#v1_indexes_index_bulk_index_post) | **POST** /v1/indexes/{index}/bulk_index | Index a list of SMILES and associated, free-form JSON attributes which are indexed and searchable |
 | [**v1_indexes_index_get**](DefaultApi.md#v1_indexes_index_get) | **GET** /v1/indexes/{index} | Get extended information about an index |
@@ -12,6 +13,70 @@ All URIs are relative to *http://localhost:4001/api*
 | [**v1_indexes_index_search_substructure_get**](DefaultApi.md#v1_indexes_index_search_substructure_get) | **GET** /v1/indexes/{index}/search/substructure | Perform substructure search against index |
 | [**v1_schemas_get**](DefaultApi.md#v1_schemas_get) | **GET** /v1/schemas | List schemas available for creating indexes |
 | [**v1_standardize_post**](DefaultApi.md#v1_standardize_post) | **POST** /v1/standardize | Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines |
+
+
+## v1_convert_mol_block_to_smiles_post
+
+> <Array<ConvertedSmiles>> v1_convert_mol_block_to_smiles_post(sanitize, mol_block)
+
+Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines
+
+### Examples
+
+```ruby
+require 'time'
+require 'cheminee'
+
+api_instance = Cheminee::DefaultApi.new
+sanitize = 'sanitize_example' # String | 
+mol_block = [Cheminee::MolBlock.new({mol_block: 'mol_block_example'})] # Array<MolBlock> | 
+
+begin
+  # Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines
+  result = api_instance.v1_convert_mol_block_to_smiles_post(sanitize, mol_block)
+  p result
+rescue Cheminee::ApiError => e
+  puts "Error when calling DefaultApi->v1_convert_mol_block_to_smiles_post: #{e}"
+end
+```
+
+#### Using the v1_convert_mol_block_to_smiles_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<ConvertedSmiles>>, Integer, Hash)> v1_convert_mol_block_to_smiles_post_with_http_info(sanitize, mol_block)
+
+```ruby
+begin
+  # Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines
+  data, status_code, headers = api_instance.v1_convert_mol_block_to_smiles_post_with_http_info(sanitize, mol_block)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<ConvertedSmiles>>
+rescue Cheminee::ApiError => e
+  puts "Error when calling DefaultApi->v1_convert_mol_block_to_smiles_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sanitize** | **String** |  |  |
+| **mol_block** | [**Array&lt;MolBlock&gt;**](MolBlock.md) |  |  |
+
+### Return type
+
+[**Array&lt;ConvertedSmiles&gt;**](ConvertedSmiles.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=utf-8
+- **Accept**: application/json; charset=utf-8
 
 
 ## v1_indexes_get
