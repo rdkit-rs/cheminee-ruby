@@ -533,7 +533,7 @@ No authorization required
 
 ## v1_standardize_post
 
-> <Array<StandardizedSmiles>> v1_standardize_post(smiles)
+> <Array<StandardizedSmiles>> v1_standardize_post(smiles, opts)
 
 Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines
 
@@ -545,10 +545,13 @@ require 'cheminee'
 
 api_instance = Cheminee::DefaultApi.new
 smiles = [Cheminee::Smiles.new({smiles: 'smiles_example'})] # Array<Smiles> | 
+opts = {
+  attempt_fix: 'attempt_fix_example' # String | 
+}
 
 begin
   # Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines
-  result = api_instance.v1_standardize_post(smiles)
+  result = api_instance.v1_standardize_post(smiles, opts)
   p result
 rescue Cheminee::ApiError => e
   puts "Error when calling DefaultApi->v1_standardize_post: #{e}"
@@ -559,12 +562,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<StandardizedSmiles>>, Integer, Hash)> v1_standardize_post_with_http_info(smiles)
+> <Array(<Array<StandardizedSmiles>>, Integer, Hash)> v1_standardize_post_with_http_info(smiles, opts)
 
 ```ruby
 begin
   # Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines
-  data, status_code, headers = api_instance.v1_standardize_post_with_http_info(smiles)
+  data, status_code, headers = api_instance.v1_standardize_post_with_http_info(smiles, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<StandardizedSmiles>>
@@ -578,6 +581,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **smiles** | [**Array&lt;Smiles&gt;**](Smiles.md) |  |  |
+| **attempt_fix** | **String** |  | [optional] |
 
 ### Return type
 
