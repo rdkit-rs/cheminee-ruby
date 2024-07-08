@@ -418,7 +418,8 @@ smiles = 'smiles_example' # String |
 opts = {
   result_limit: 56, # Integer | 
   tautomer_limit: 56, # Integer | 
-  extra_query: 'extra_query_example' # String | 
+  extra_query: 'extra_query_example', # String | 
+  use_scaffolds: 'use_scaffolds_example' # String | 
 }
 
 begin
@@ -457,6 +458,7 @@ end
 | **result_limit** | **Integer** |  | [optional] |
 | **tautomer_limit** | **Integer** |  | [optional] |
 | **extra_query** | **String** |  | [optional] |
+| **use_scaffolds** | **String** |  | [optional] |
 
 ### Return type
 
