@@ -56,7 +56,7 @@ module Cheminee
       # header parameters
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8']) unless header_params['Accept']
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json; charset=utf-8'])
       if !content_type.nil?
@@ -116,7 +116,7 @@ module Cheminee
       # header parameters
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8']) unless header_params['Accept']
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -183,7 +183,7 @@ module Cheminee
       # header parameters
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8']) unless header_params['Accept']
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json; charset=utf-8'])
       if !content_type.nil?
@@ -249,7 +249,7 @@ module Cheminee
       # header parameters
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8']) unless header_params['Accept']
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -320,7 +320,7 @@ module Cheminee
       # header parameters
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8']) unless header_params['Accept']
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -391,7 +391,7 @@ module Cheminee
       # header parameters
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8']) unless header_params['Accept']
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -418,6 +418,80 @@ module Cheminee
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#v1_indexes_index_search_basic_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Perform identity search (i.e. exact match) against index
+    # @param index [String] 
+    # @param smiles [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :extra_query 
+    # @option opts [String] :use_scaffolds 
+    # @return [Array<StructureSearchHit>]
+    def v1_indexes_index_search_identity_get(index, smiles, opts = {})
+      data, _status_code, _headers = v1_indexes_index_search_identity_get_with_http_info(index, smiles, opts)
+      data
+    end
+
+    # Perform identity search (i.e. exact match) against index
+    # @param index [String] 
+    # @param smiles [String] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :extra_query 
+    # @option opts [String] :use_scaffolds 
+    # @return [Array<(Array<StructureSearchHit>, Integer, Hash)>] Array<StructureSearchHit> data, response status code and response headers
+    def v1_indexes_index_search_identity_get_with_http_info(index, smiles, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.v1_indexes_index_search_identity_get ...'
+      end
+      # verify the required parameter 'index' is set
+      if @api_client.config.client_side_validation && index.nil?
+        fail ArgumentError, "Missing the required parameter 'index' when calling DefaultApi.v1_indexes_index_search_identity_get"
+      end
+      # verify the required parameter 'smiles' is set
+      if @api_client.config.client_side_validation && smiles.nil?
+        fail ArgumentError, "Missing the required parameter 'smiles' when calling DefaultApi.v1_indexes_index_search_identity_get"
+      end
+      # resource path
+      local_var_path = '/v1/indexes/{index}/search/identity'.sub('{' + 'index' + '}', CGI.escape(index.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'smiles'] = smiles
+      query_params[:'extra_query'] = opts[:'extra_query'] if !opts[:'extra_query'].nil?
+      query_params[:'use_scaffolds'] = opts[:'use_scaffolds'] if !opts[:'use_scaffolds'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<StructureSearchHit>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.v1_indexes_index_search_identity_get",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#v1_indexes_index_search_identity_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -471,7 +545,7 @@ module Cheminee
       # header parameters
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8']) unless header_params['Accept']
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -526,7 +600,7 @@ module Cheminee
       # header parameters
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8']) unless header_params['Accept']
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -590,7 +664,7 @@ module Cheminee
       # header parameters
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8']) unless header_params['Accept']
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json; charset=utf-8'])
       if !content_type.nil?
