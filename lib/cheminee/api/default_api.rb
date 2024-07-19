@@ -147,6 +147,78 @@ module Cheminee
       return data, status_code, headers
     end
 
+    # Delete a list of smiles (after standardization) from an index
+    # @param index [String] 
+    # @param bulk_request [BulkRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [DeleteIndexBulkResponseOk]
+    def v1_indexes_index_bulk_delete_delete(index, bulk_request, opts = {})
+      data, _status_code, _headers = v1_indexes_index_bulk_delete_delete_with_http_info(index, bulk_request, opts)
+      data
+    end
+
+    # Delete a list of smiles (after standardization) from an index
+    # @param index [String] 
+    # @param bulk_request [BulkRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(DeleteIndexBulkResponseOk, Integer, Hash)>] DeleteIndexBulkResponseOk data, response status code and response headers
+    def v1_indexes_index_bulk_delete_delete_with_http_info(index, bulk_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.v1_indexes_index_bulk_delete_delete ...'
+      end
+      # verify the required parameter 'index' is set
+      if @api_client.config.client_side_validation && index.nil?
+        fail ArgumentError, "Missing the required parameter 'index' when calling DefaultApi.v1_indexes_index_bulk_delete_delete"
+      end
+      # verify the required parameter 'bulk_request' is set
+      if @api_client.config.client_side_validation && bulk_request.nil?
+        fail ArgumentError, "Missing the required parameter 'bulk_request' when calling DefaultApi.v1_indexes_index_bulk_delete_delete"
+      end
+      # resource path
+      local_var_path = '/v1/indexes/{index}/bulk_delete'.sub('{' + 'index' + '}', CGI.escape(index.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=utf-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(bulk_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'DeleteIndexBulkResponseOk'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.v1_indexes_index_bulk_delete_delete",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#v1_indexes_index_bulk_delete_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Index a list of SMILES and associated, free-form JSON attributes which are indexed and searchable
     # @param index [String] 
     # @param bulk_request [BulkRequest] 
@@ -215,6 +287,67 @@ module Cheminee
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#v1_indexes_index_bulk_index_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete an index
+    # @param index [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [IndexMeta]
+    def v1_indexes_index_delete(index, opts = {})
+      data, _status_code, _headers = v1_indexes_index_delete_with_http_info(index, opts)
+      data
+    end
+
+    # Delete an index
+    # @param index [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(IndexMeta, Integer, Hash)>] IndexMeta data, response status code and response headers
+    def v1_indexes_index_delete_with_http_info(index, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.v1_indexes_index_delete ...'
+      end
+      # verify the required parameter 'index' is set
+      if @api_client.config.client_side_validation && index.nil?
+        fail ArgumentError, "Missing the required parameter 'index' when calling DefaultApi.v1_indexes_index_delete"
+      end
+      # resource path
+      local_var_path = '/v1/indexes/{index}'.sub('{' + 'index' + '}', CGI.escape(index.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'IndexMeta'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.v1_indexes_index_delete",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#v1_indexes_index_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

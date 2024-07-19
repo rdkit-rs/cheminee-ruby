@@ -6,7 +6,9 @@ All URIs are relative to *http://localhost:4001/api*
 | ------ | ------------ | ----------- |
 | [**v1_convert_mol_block_to_smiles_post**](DefaultApi.md#v1_convert_mol_block_to_smiles_post) | **POST** /v1/convert/mol_block_to_smiles | Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines |
 | [**v1_indexes_get**](DefaultApi.md#v1_indexes_get) | **GET** /v1/indexes | List indexes |
+| [**v1_indexes_index_bulk_delete_delete**](DefaultApi.md#v1_indexes_index_bulk_delete_delete) | **DELETE** /v1/indexes/{index}/bulk_delete | Delete a list of smiles (after standardization) from an index |
 | [**v1_indexes_index_bulk_index_post**](DefaultApi.md#v1_indexes_index_bulk_index_post) | **POST** /v1/indexes/{index}/bulk_index | Index a list of SMILES and associated, free-form JSON attributes which are indexed and searchable |
+| [**v1_indexes_index_delete**](DefaultApi.md#v1_indexes_index_delete) | **DELETE** /v1/indexes/{index} | Delete an index |
 | [**v1_indexes_index_get**](DefaultApi.md#v1_indexes_index_get) | **GET** /v1/indexes/{index} | Get extended information about an index |
 | [**v1_indexes_index_post**](DefaultApi.md#v1_indexes_index_post) | **POST** /v1/indexes/{index} | Create an index |
 | [**v1_indexes_index_search_basic_get**](DefaultApi.md#v1_indexes_index_search_basic_get) | **GET** /v1/indexes/{index}/search/basic | Perform basic query search against index |
@@ -139,6 +141,70 @@ No authorization required
 - **Accept**: application/json; charset=utf-8
 
 
+## v1_indexes_index_bulk_delete_delete
+
+> <DeleteIndexBulkResponseOk> v1_indexes_index_bulk_delete_delete(index, bulk_request)
+
+Delete a list of smiles (after standardization) from an index
+
+### Examples
+
+```ruby
+require 'time'
+require 'cheminee'
+
+api_instance = Cheminee::DefaultApi.new
+index = 'index_example' # String | 
+bulk_request = Cheminee::BulkRequest.new({docs: [Cheminee::BulkRequestDoc.new({smiles: 'smiles_example'})]}) # BulkRequest | 
+
+begin
+  # Delete a list of smiles (after standardization) from an index
+  result = api_instance.v1_indexes_index_bulk_delete_delete(index, bulk_request)
+  p result
+rescue Cheminee::ApiError => e
+  puts "Error when calling DefaultApi->v1_indexes_index_bulk_delete_delete: #{e}"
+end
+```
+
+#### Using the v1_indexes_index_bulk_delete_delete_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteIndexBulkResponseOk>, Integer, Hash)> v1_indexes_index_bulk_delete_delete_with_http_info(index, bulk_request)
+
+```ruby
+begin
+  # Delete a list of smiles (after standardization) from an index
+  data, status_code, headers = api_instance.v1_indexes_index_bulk_delete_delete_with_http_info(index, bulk_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteIndexBulkResponseOk>
+rescue Cheminee::ApiError => e
+  puts "Error when calling DefaultApi->v1_indexes_index_bulk_delete_delete_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **index** | **String** |  |  |
+| **bulk_request** | [**BulkRequest**](BulkRequest.md) |  |  |
+
+### Return type
+
+[**DeleteIndexBulkResponseOk**](DeleteIndexBulkResponseOk.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=utf-8
+- **Accept**: application/json; charset=utf-8
+
+
 ## v1_indexes_index_bulk_index_post
 
 > <PostIndexBulkResponseOk> v1_indexes_index_bulk_index_post(index, bulk_request)
@@ -200,6 +266,68 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=utf-8
+- **Accept**: application/json; charset=utf-8
+
+
+## v1_indexes_index_delete
+
+> <IndexMeta> v1_indexes_index_delete(index)
+
+Delete an index
+
+### Examples
+
+```ruby
+require 'time'
+require 'cheminee'
+
+api_instance = Cheminee::DefaultApi.new
+index = 'index_example' # String | 
+
+begin
+  # Delete an index
+  result = api_instance.v1_indexes_index_delete(index)
+  p result
+rescue Cheminee::ApiError => e
+  puts "Error when calling DefaultApi->v1_indexes_index_delete: #{e}"
+end
+```
+
+#### Using the v1_indexes_index_delete_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<IndexMeta>, Integer, Hash)> v1_indexes_index_delete_with_http_info(index)
+
+```ruby
+begin
+  # Delete an index
+  data, status_code, headers = api_instance.v1_indexes_index_delete_with_http_info(index)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <IndexMeta>
+rescue Cheminee::ApiError => e
+  puts "Error when calling DefaultApi->v1_indexes_index_delete_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **index** | **String** |  |  |
+
+### Return type
+
+[**IndexMeta**](IndexMeta.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json; charset=utf-8
 
 
