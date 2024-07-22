@@ -9,6 +9,7 @@ Rakefile
 cheminee.gemspec
 docs/BulkRequest.md
 docs/BulkRequestDoc.md
+docs/ConvertedMolBlock.md
 docs/ConvertedSmiles.md
 docs/CreateIndexError.md
 docs/DefaultApi.md
@@ -39,6 +40,7 @@ lib/cheminee/api_error.rb
 lib/cheminee/configuration.rb
 lib/cheminee/models/bulk_request.rb
 lib/cheminee/models/bulk_request_doc.rb
+lib/cheminee/models/converted_mol_block.rb
 lib/cheminee/models/converted_smiles.rb
 lib/cheminee/models/create_index_error.rb
 lib/cheminee/models/delete_index_bulk_response_error.rb
@@ -61,8 +63,5 @@ lib/cheminee/models/standardized_smiles.rb
 lib/cheminee/models/structure_response_error.rb
 lib/cheminee/models/structure_search_hit.rb
 lib/cheminee/version.rb
-spec/models/delete_index_bulk_response_error_spec.rb
-spec/models/delete_index_bulk_response_ok_spec.rb
-spec/models/delete_index_bulk_response_ok_status_spec.rb
-spec/models/delete_index_error_spec.rb
+spec/models/converted_mol_block_spec.rb
 spec/spec_helper.rb

@@ -19,6 +19,7 @@ require 'cheminee/configuration'
 # Models
 require 'cheminee/models/bulk_request'
 require 'cheminee/models/bulk_request_doc'
+require 'cheminee/models/converted_mol_block'
 require 'cheminee/models/converted_smiles'
 require 'cheminee/models/create_index_error'
 require 'cheminee/models/delete_index_bulk_response_error'

@@ -4,7 +4,8 @@ All URIs are relative to *http://localhost:4001/api*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**v1_convert_mol_block_to_smiles_post**](DefaultApi.md#v1_convert_mol_block_to_smiles_post) | **POST** /v1/convert/mol_block_to_smiles | Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines |
+| [**v1_convert_mol_block_to_smiles_post**](DefaultApi.md#v1_convert_mol_block_to_smiles_post) | **POST** /v1/convert/mol_block_to_smiles | Convert a list of SMILES to molblocks |
+| [**v1_convert_smiles_to_mol_block_post**](DefaultApi.md#v1_convert_smiles_to_mol_block_post) | **POST** /v1/convert/smiles_to_mol_block | Convert a list of molblocks to SMILES |
 | [**v1_indexes_get**](DefaultApi.md#v1_indexes_get) | **GET** /v1/indexes | List indexes |
 | [**v1_indexes_index_bulk_delete_delete**](DefaultApi.md#v1_indexes_index_bulk_delete_delete) | **DELETE** /v1/indexes/{index}/bulk_delete | Delete a list of smiles (after standardization) from an index |
 | [**v1_indexes_index_bulk_index_post**](DefaultApi.md#v1_indexes_index_bulk_index_post) | **POST** /v1/indexes/{index}/bulk_index | Index a list of SMILES and associated, free-form JSON attributes which are indexed and searchable |
@@ -22,7 +23,7 @@ All URIs are relative to *http://localhost:4001/api*
 
 > <Array<ConvertedSmiles>> v1_convert_mol_block_to_smiles_post(sanitize, mol_block)
 
-Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines
+Convert a list of SMILES to molblocks
 
 ### Examples
 
@@ -35,7 +36,7 @@ sanitize = 'sanitize_example' # String |
 mol_block = [Cheminee::MolBlock.new({mol_block: 'mol_block_example'})] # Array<MolBlock> | 
 
 begin
-  # Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines
+  # Convert a list of SMILES to molblocks
   result = api_instance.v1_convert_mol_block_to_smiles_post(sanitize, mol_block)
   p result
 rescue Cheminee::ApiError => e
@@ -51,7 +52,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines
+  # Convert a list of SMILES to molblocks
   data, status_code, headers = api_instance.v1_convert_mol_block_to_smiles_post_with_http_info(sanitize, mol_block)
   p status_code # => 2xx
   p headers # => { ... }
@@ -71,6 +72,68 @@ end
 ### Return type
 
 [**Array&lt;ConvertedSmiles&gt;**](ConvertedSmiles.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json; charset=utf-8
+- **Accept**: application/json; charset=utf-8
+
+
+## v1_convert_smiles_to_mol_block_post
+
+> <Array<ConvertedMolBlock>> v1_convert_smiles_to_mol_block_post(smiles)
+
+Convert a list of molblocks to SMILES
+
+### Examples
+
+```ruby
+require 'time'
+require 'cheminee'
+
+api_instance = Cheminee::DefaultApi.new
+smiles = [Cheminee::Smiles.new({smiles: 'smiles_example'})] # Array<Smiles> | 
+
+begin
+  # Convert a list of molblocks to SMILES
+  result = api_instance.v1_convert_smiles_to_mol_block_post(smiles)
+  p result
+rescue Cheminee::ApiError => e
+  puts "Error when calling DefaultApi->v1_convert_smiles_to_mol_block_post: #{e}"
+end
+```
+
+#### Using the v1_convert_smiles_to_mol_block_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<ConvertedMolBlock>>, Integer, Hash)> v1_convert_smiles_to_mol_block_post_with_http_info(smiles)
+
+```ruby
+begin
+  # Convert a list of molblocks to SMILES
+  data, status_code, headers = api_instance.v1_convert_smiles_to_mol_block_post_with_http_info(smiles)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<ConvertedMolBlock>>
+rescue Cheminee::ApiError => e
+  puts "Error when calling DefaultApi->v1_convert_smiles_to_mol_block_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **smiles** | [**Array&lt;Smiles&gt;**](Smiles.md) |  |  |
+
+### Return type
+
+[**Array&lt;ConvertedMolBlock&gt;**](ConvertedMolBlock.md)
 
 ### Authorization
 

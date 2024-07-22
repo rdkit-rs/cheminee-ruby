@@ -19,7 +19,7 @@ module Cheminee
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines
+    # Convert a list of SMILES to molblocks
     # @param sanitize [String] 
     # @param mol_block [Array<MolBlock>] 
     # @param [Hash] opts the optional parameters
@@ -29,7 +29,7 @@ module Cheminee
       data
     end
 
-    # Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines
+    # Convert a list of SMILES to molblocks
     # @param sanitize [String] 
     # @param mol_block [Array<MolBlock>] 
     # @param [Hash] opts the optional parameters
@@ -88,6 +88,72 @@ module Cheminee
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#v1_convert_mol_block_to_smiles_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Convert a list of molblocks to SMILES
+    # @param smiles [Array<Smiles>] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<ConvertedMolBlock>]
+    def v1_convert_smiles_to_mol_block_post(smiles, opts = {})
+      data, _status_code, _headers = v1_convert_smiles_to_mol_block_post_with_http_info(smiles, opts)
+      data
+    end
+
+    # Convert a list of molblocks to SMILES
+    # @param smiles [Array<Smiles>] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<ConvertedMolBlock>, Integer, Hash)>] Array<ConvertedMolBlock> data, response status code and response headers
+    def v1_convert_smiles_to_mol_block_post_with_http_info(smiles, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.v1_convert_smiles_to_mol_block_post ...'
+      end
+      # verify the required parameter 'smiles' is set
+      if @api_client.config.client_side_validation && smiles.nil?
+        fail ArgumentError, "Missing the required parameter 'smiles' when calling DefaultApi.v1_convert_smiles_to_mol_block_post"
+      end
+      # resource path
+      local_var_path = '/v1/convert/smiles_to_mol_block'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json; charset=utf-8'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(smiles)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<ConvertedMolBlock>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.v1_convert_smiles_to_mol_block_post",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#v1_convert_smiles_to_mol_block_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
