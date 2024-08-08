@@ -63,5 +63,4 @@ lib/cheminee/models/standardized_smiles.rb
 lib/cheminee/models/structure_response_error.rb
 lib/cheminee/models/structure_search_hit.rb
 lib/cheminee/version.rb
-spec/models/converted_mol_block_spec.rb
 spec/spec_helper.rb

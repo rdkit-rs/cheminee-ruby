@@ -15,6 +15,7 @@ All URIs are relative to *http://localhost:4001/api*
 | [**v1_indexes_index_search_basic_get**](DefaultApi.md#v1_indexes_index_search_basic_get) | **GET** /v1/indexes/{index}/search/basic | Perform basic query search against index |
 | [**v1_indexes_index_search_identity_get**](DefaultApi.md#v1_indexes_index_search_identity_get) | **GET** /v1/indexes/{index}/search/identity | Perform identity search (i.e. exact match) against index |
 | [**v1_indexes_index_search_substructure_get**](DefaultApi.md#v1_indexes_index_search_substructure_get) | **GET** /v1/indexes/{index}/search/substructure | Perform substructure search against index |
+| [**v1_indexes_index_search_superstructure_get**](DefaultApi.md#v1_indexes_index_search_superstructure_get) | **GET** /v1/indexes/{index}/search/superstructure | Perform superstructure search against index |
 | [**v1_schemas_get**](DefaultApi.md#v1_schemas_get) | **GET** /v1/schemas | List schemas available for creating indexes |
 | [**v1_standardize_post**](DefaultApi.md#v1_standardize_post) | **POST** /v1/standardize | Pass a list of SMILES through fragment_parent, uncharger, and canonicalization routines |
 
@@ -708,6 +709,80 @@ begin
   p data # => <Array<StructureSearchHit>>
 rescue Cheminee::ApiError => e
   puts "Error when calling DefaultApi->v1_indexes_index_search_substructure_get_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **index** | **String** |  |  |
+| **smiles** | **String** |  |  |
+| **result_limit** | **Integer** |  | [optional] |
+| **tautomer_limit** | **Integer** |  | [optional] |
+| **extra_query** | **String** |  | [optional] |
+| **use_scaffolds** | **String** |  | [optional] |
+
+### Return type
+
+[**Array&lt;StructureSearchHit&gt;**](StructureSearchHit.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json; charset=utf-8
+
+
+## v1_indexes_index_search_superstructure_get
+
+> <Array<StructureSearchHit>> v1_indexes_index_search_superstructure_get(index, smiles, opts)
+
+Perform superstructure search against index
+
+### Examples
+
+```ruby
+require 'time'
+require 'cheminee'
+
+api_instance = Cheminee::DefaultApi.new
+index = 'index_example' # String | 
+smiles = 'smiles_example' # String | 
+opts = {
+  result_limit: 56, # Integer | 
+  tautomer_limit: 56, # Integer | 
+  extra_query: 'extra_query_example', # String | 
+  use_scaffolds: 'use_scaffolds_example' # String | 
+}
+
+begin
+  # Perform superstructure search against index
+  result = api_instance.v1_indexes_index_search_superstructure_get(index, smiles, opts)
+  p result
+rescue Cheminee::ApiError => e
+  puts "Error when calling DefaultApi->v1_indexes_index_search_superstructure_get: #{e}"
+end
+```
+
+#### Using the v1_indexes_index_search_superstructure_get_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<StructureSearchHit>>, Integer, Hash)> v1_indexes_index_search_superstructure_get_with_http_info(index, smiles, opts)
+
+```ruby
+begin
+  # Perform superstructure search against index
+  data, status_code, headers = api_instance.v1_indexes_index_search_superstructure_get_with_http_info(index, smiles, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<StructureSearchHit>>
+rescue Cheminee::ApiError => e
+  puts "Error when calling DefaultApi->v1_indexes_index_search_superstructure_get_with_http_info: #{e}"
 end
 ```
 
