@@ -11,5 +11,5 @@ Generator version: 7.9.0-SNAPSHOT
 =end
 
 module Cheminee
-  VERSION = '0.1.29'
+  VERSION = '0.1.30'
 end
