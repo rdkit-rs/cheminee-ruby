@@ -609,6 +609,7 @@ api_instance = Cheminee::DefaultApi.new
 index = 'index_example' # String | 
 smiles = 'smiles_example' # String | 
 opts = {
+  use_chirality: 'use_chirality_example', # String | 
   extra_query: 'extra_query_example', # String | 
   use_scaffolds: 'use_scaffolds_example' # String | 
 }
@@ -646,6 +647,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **index** | **String** |  |  |
 | **smiles** | **String** |  |  |
+| **use_chirality** | **String** |  | [optional] |
 | **extra_query** | **String** |  | [optional] |
 | **use_scaffolds** | **String** |  | [optional] |
 
@@ -679,6 +681,7 @@ api_instance = Cheminee::DefaultApi.new
 index = 'index_example' # String | 
 smiles = 'smiles_example' # String | 
 opts = {
+  use_chirality: 'use_chirality_example', # String | 
   result_limit: 56, # Integer | 
   tautomer_limit: 56, # Integer | 
   extra_query: 'extra_query_example', # String | 
@@ -718,6 +721,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **index** | **String** |  |  |
 | **smiles** | **String** |  |  |
+| **use_chirality** | **String** |  | [optional] |
 | **result_limit** | **Integer** |  | [optional] |
 | **tautomer_limit** | **Integer** |  | [optional] |
 | **extra_query** | **String** |  | [optional] |
@@ -753,6 +757,7 @@ api_instance = Cheminee::DefaultApi.new
 index = 'index_example' # String | 
 smiles = 'smiles_example' # String | 
 opts = {
+  use_chirality: 'use_chirality_example', # String | 
   result_limit: 56, # Integer | 
   tautomer_limit: 56, # Integer | 
   extra_query: 'extra_query_example', # String | 
@@ -792,6 +797,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **index** | **String** |  |  |
 | **smiles** | **String** |  |  |
+| **use_chirality** | **String** |  | [optional] |
 | **result_limit** | **Integer** |  | [optional] |
 | **tautomer_limit** | **Integer** |  | [optional] |
 | **extra_query** | **String** |  | [optional] |

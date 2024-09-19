@@ -625,6 +625,7 @@ module Cheminee
     # @param index [String] 
     # @param smiles [String] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :use_chirality 
     # @option opts [String] :extra_query 
     # @option opts [String] :use_scaffolds 
     # @return [Array<StructureSearchHit>]
@@ -637,6 +638,7 @@ module Cheminee
     # @param index [String] 
     # @param smiles [String] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :use_chirality 
     # @option opts [String] :extra_query 
     # @option opts [String] :use_scaffolds 
     # @return [Array<(Array<StructureSearchHit>, Integer, Hash)>] Array<StructureSearchHit> data, response status code and response headers
@@ -658,6 +660,7 @@ module Cheminee
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'smiles'] = smiles
+      query_params[:'use_chirality'] = opts[:'use_chirality'] if !opts[:'use_chirality'].nil?
       query_params[:'extra_query'] = opts[:'extra_query'] if !opts[:'extra_query'].nil?
       query_params[:'use_scaffolds'] = opts[:'use_scaffolds'] if !opts[:'use_scaffolds'].nil?
 
@@ -699,6 +702,7 @@ module Cheminee
     # @param index [String] 
     # @param smiles [String] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :use_chirality 
     # @option opts [Integer] :result_limit 
     # @option opts [Integer] :tautomer_limit 
     # @option opts [String] :extra_query 
@@ -713,6 +717,7 @@ module Cheminee
     # @param index [String] 
     # @param smiles [String] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :use_chirality 
     # @option opts [Integer] :result_limit 
     # @option opts [Integer] :tautomer_limit 
     # @option opts [String] :extra_query 
@@ -736,6 +741,7 @@ module Cheminee
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'smiles'] = smiles
+      query_params[:'use_chirality'] = opts[:'use_chirality'] if !opts[:'use_chirality'].nil?
       query_params[:'result_limit'] = opts[:'result_limit'] if !opts[:'result_limit'].nil?
       query_params[:'tautomer_limit'] = opts[:'tautomer_limit'] if !opts[:'tautomer_limit'].nil?
       query_params[:'extra_query'] = opts[:'extra_query'] if !opts[:'extra_query'].nil?
@@ -779,6 +785,7 @@ module Cheminee
     # @param index [String] 
     # @param smiles [String] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :use_chirality 
     # @option opts [Integer] :result_limit 
     # @option opts [Integer] :tautomer_limit 
     # @option opts [String] :extra_query 
@@ -793,6 +800,7 @@ module Cheminee
     # @param index [String] 
     # @param smiles [String] 
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :use_chirality 
     # @option opts [Integer] :result_limit 
     # @option opts [Integer] :tautomer_limit 
     # @option opts [String] :extra_query 
@@ -816,6 +824,7 @@ module Cheminee
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'smiles'] = smiles
+      query_params[:'use_chirality'] = opts[:'use_chirality'] if !opts[:'use_chirality'].nil?
       query_params[:'result_limit'] = opts[:'result_limit'] if !opts[:'result_limit'].nil?
       query_params[:'tautomer_limit'] = opts[:'tautomer_limit'] if !opts[:'tautomer_limit'].nil?
       query_params[:'extra_query'] = opts[:'extra_query'] if !opts[:'extra_query'].nil?
