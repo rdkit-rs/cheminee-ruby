@@ -81,7 +81,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=utf-8
-- **Accept**: application/json; charset=utf-8
+- **Accept**: application/json
 
 
 ## v1_convert_smiles_to_mol_block_post
@@ -143,7 +143,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=utf-8
-- **Accept**: application/json; charset=utf-8
+- **Accept**: application/json
 
 
 ## v1_indexes_get
@@ -202,7 +202,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json; charset=utf-8
+- **Accept**: application/json
 
 
 ## v1_indexes_index_bulk_delete_delete
@@ -266,7 +266,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=utf-8
-- **Accept**: application/json; charset=utf-8
+- **Accept**: application/json
 
 
 ## v1_indexes_index_bulk_index_post
@@ -330,7 +330,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=utf-8
-- **Accept**: application/json; charset=utf-8
+- **Accept**: application/json
 
 
 ## v1_indexes_index_delete
@@ -392,7 +392,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json; charset=utf-8
+- **Accept**: application/json
 
 
 ## v1_indexes_index_get
@@ -454,7 +454,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json; charset=utf-8
+- **Accept**: application/json
 
 
 ## v1_indexes_index_post
@@ -522,7 +522,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json; charset=utf-8
+- **Accept**: application/json
 
 
 ## v1_indexes_index_search_basic_get
@@ -590,7 +590,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json; charset=utf-8
+- **Accept**: application/json
 
 
 ## v1_indexes_index_search_identity_get
@@ -662,7 +662,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json; charset=utf-8
+- **Accept**: application/json
 
 
 ## v1_indexes_index_search_substructure_get
@@ -738,7 +738,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json; charset=utf-8
+- **Accept**: application/json
 
 
 ## v1_indexes_index_search_superstructure_get
@@ -814,7 +814,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json; charset=utf-8
+- **Accept**: application/json
 
 
 ## v1_schemas_get
@@ -873,7 +873,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json; charset=utf-8
+- **Accept**: application/json
 
 
 ## v1_standardize_post
@@ -939,5 +939,5 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json; charset=utf-8
-- **Accept**: application/json; charset=utf-8
+- **Accept**: application/json
 
