@@ -479,11 +479,71 @@ module Cheminee
       return data, status_code, headers
     end
 
+    # Merge segments inside the index
+    # @param index [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [String]
+    def v1_indexes_index_merge_post(index, opts = {})
+      data, _status_code, _headers = v1_indexes_index_merge_post_with_http_info(index, opts)
+      data
+    end
+
+    # Merge segments inside the index
+    # @param index [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
+    def v1_indexes_index_merge_post_with_http_info(index, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.v1_indexes_index_merge_post ...'
+      end
+      # verify the required parameter 'index' is set
+      if @api_client.config.client_side_validation && index.nil?
+        fail ArgumentError, "Missing the required parameter 'index' when calling DefaultApi.v1_indexes_index_merge_post"
+      end
+      # resource path
+      local_var_path = '/v1/indexes/{index}/merge'.sub('{' + 'index' + '}', CGI.escape(index.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/json; charset=utf-8']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'String'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.v1_indexes_index_merge_post",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#v1_indexes_index_merge_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create an index
     # @param index [String] 
     # @param schema [String] 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :sort_by 
     # @return [IndexMeta]
     def v1_indexes_index_post(index, schema, opts = {})
       data, _status_code, _headers = v1_indexes_index_post_with_http_info(index, schema, opts)
@@ -494,7 +554,6 @@ module Cheminee
     # @param index [String] 
     # @param schema [String] 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :sort_by 
     # @return [Array<(IndexMeta, Integer, Hash)>] IndexMeta data, response status code and response headers
     def v1_indexes_index_post_with_http_info(index, schema, opts = {})
       if @api_client.config.debugging
@@ -514,7 +573,6 @@ module Cheminee
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'schema'] = schema
-      query_params[:'sort_by'] = opts[:'sort_by'] if !opts[:'sort_by'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

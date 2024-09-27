@@ -11,6 +11,7 @@ All URIs are relative to *http://localhost:4001/api*
 | [**v1_indexes_index_bulk_index_post**](DefaultApi.md#v1_indexes_index_bulk_index_post) | **POST** /v1/indexes/{index}/bulk_index | Index a list of SMILES and associated, free-form JSON attributes which are indexed and searchable |
 | [**v1_indexes_index_delete**](DefaultApi.md#v1_indexes_index_delete) | **DELETE** /v1/indexes/{index} | Delete an index |
 | [**v1_indexes_index_get**](DefaultApi.md#v1_indexes_index_get) | **GET** /v1/indexes/{index} | Get extended information about an index |
+| [**v1_indexes_index_merge_post**](DefaultApi.md#v1_indexes_index_merge_post) | **POST** /v1/indexes/{index}/merge | Merge segments inside the index |
 | [**v1_indexes_index_post**](DefaultApi.md#v1_indexes_index_post) | **POST** /v1/indexes/{index} | Create an index |
 | [**v1_indexes_index_search_basic_get**](DefaultApi.md#v1_indexes_index_search_basic_get) | **GET** /v1/indexes/{index}/search/basic | Perform basic query search against index |
 | [**v1_indexes_index_search_identity_get**](DefaultApi.md#v1_indexes_index_search_identity_get) | **GET** /v1/indexes/{index}/search/identity | Perform identity search (i.e. exact match) against index |
@@ -457,9 +458,71 @@ No authorization required
 - **Accept**: application/json
 
 
+## v1_indexes_index_merge_post
+
+> String v1_indexes_index_merge_post(index)
+
+Merge segments inside the index
+
+### Examples
+
+```ruby
+require 'time'
+require 'cheminee'
+
+api_instance = Cheminee::DefaultApi.new
+index = 'index_example' # String | 
+
+begin
+  # Merge segments inside the index
+  result = api_instance.v1_indexes_index_merge_post(index)
+  p result
+rescue Cheminee::ApiError => e
+  puts "Error when calling DefaultApi->v1_indexes_index_merge_post: #{e}"
+end
+```
+
+#### Using the v1_indexes_index_merge_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(String, Integer, Hash)> v1_indexes_index_merge_post_with_http_info(index)
+
+```ruby
+begin
+  # Merge segments inside the index
+  data, status_code, headers = api_instance.v1_indexes_index_merge_post_with_http_info(index)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => String
+rescue Cheminee::ApiError => e
+  puts "Error when calling DefaultApi->v1_indexes_index_merge_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **index** | **String** |  |  |
+
+### Return type
+
+**String**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/json; charset=utf-8
+
+
 ## v1_indexes_index_post
 
-> <IndexMeta> v1_indexes_index_post(index, schema, opts)
+> <IndexMeta> v1_indexes_index_post(index, schema)
 
 Create an index
 
@@ -472,13 +535,10 @@ require 'cheminee'
 api_instance = Cheminee::DefaultApi.new
 index = 'index_example' # String | 
 schema = 'schema_example' # String | 
-opts = {
-  sort_by: 'sort_by_example' # String | 
-}
 
 begin
   # Create an index
-  result = api_instance.v1_indexes_index_post(index, schema, opts)
+  result = api_instance.v1_indexes_index_post(index, schema)
   p result
 rescue Cheminee::ApiError => e
   puts "Error when calling DefaultApi->v1_indexes_index_post: #{e}"
@@ -489,12 +549,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<IndexMeta>, Integer, Hash)> v1_indexes_index_post_with_http_info(index, schema, opts)
+> <Array(<IndexMeta>, Integer, Hash)> v1_indexes_index_post_with_http_info(index, schema)
 
 ```ruby
 begin
   # Create an index
-  data, status_code, headers = api_instance.v1_indexes_index_post_with_http_info(index, schema, opts)
+  data, status_code, headers = api_instance.v1_indexes_index_post_with_http_info(index, schema)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <IndexMeta>
@@ -509,7 +569,6 @@ end
 | ---- | ---- | ----------- | ----- |
 | **index** | **String** |  |  |
 | **schema** | **String** |  |  |
-| **sort_by** | **String** |  | [optional] |
 
 ### Return type
 
