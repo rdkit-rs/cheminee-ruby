@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **extra_data** | **String** |  |  |
+| **extra_data** | **Object** |  |  |
 | **smiles** | **String** |  |  |
 | **query** | **String** |  |  |
 

@@ -740,11 +740,11 @@ api_instance = Cheminee::DefaultApi.new
 index = 'index_example' # String | 
 smiles = 'smiles_example' # String | 
 opts = {
-  use_chirality: 'use_chirality_example', # String | 
+  use_chirality: true, # Boolean | 
   result_limit: 56, # Integer | 
   tautomer_limit: 56, # Integer | 
   extra_query: 'extra_query_example', # String | 
-  use_scaffolds: 'use_scaffolds_example' # String | 
+  use_scaffolds: true # Boolean | 
 }
 
 begin
@@ -780,11 +780,11 @@ end
 | ---- | ---- | ----------- | ----- |
 | **index** | **String** |  |  |
 | **smiles** | **String** |  |  |
-| **use_chirality** | **String** |  | [optional] |
+| **use_chirality** | **Boolean** |  | [optional] |
 | **result_limit** | **Integer** |  | [optional] |
 | **tautomer_limit** | **Integer** |  | [optional] |
 | **extra_query** | **String** |  | [optional] |
-| **use_scaffolds** | **String** |  | [optional] |
+| **use_scaffolds** | **Boolean** |  | [optional] |
 
 ### Return type
 

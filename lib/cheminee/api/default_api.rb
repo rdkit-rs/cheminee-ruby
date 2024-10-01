@@ -760,11 +760,11 @@ module Cheminee
     # @param index [String] 
     # @param smiles [String] 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :use_chirality 
+    # @option opts [Boolean] :use_chirality 
     # @option opts [Integer] :result_limit 
     # @option opts [Integer] :tautomer_limit 
     # @option opts [String] :extra_query 
-    # @option opts [String] :use_scaffolds 
+    # @option opts [Boolean] :use_scaffolds 
     # @return [Array<StructureSearchHit>]
     def v1_indexes_index_search_substructure_get(index, smiles, opts = {})
       data, _status_code, _headers = v1_indexes_index_search_substructure_get_with_http_info(index, smiles, opts)
@@ -775,11 +775,11 @@ module Cheminee
     # @param index [String] 
     # @param smiles [String] 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :use_chirality 
+    # @option opts [Boolean] :use_chirality 
     # @option opts [Integer] :result_limit 
     # @option opts [Integer] :tautomer_limit 
     # @option opts [String] :extra_query 
-    # @option opts [String] :use_scaffolds 
+    # @option opts [Boolean] :use_scaffolds 
     # @return [Array<(Array<StructureSearchHit>, Integer, Hash)>] Array<StructureSearchHit> data, response status code and response headers
     def v1_indexes_index_search_substructure_get_with_http_info(index, smiles, opts = {})
       if @api_client.config.debugging
